@@ -185,3 +185,7 @@ bindsym $mod+Shift+x move workspace to output right
 bindsym $mod+Shift+z move workspace to output left
 #i3lock. all monitors.
 bindsym $mod+Shift+p exec /home/$USER/.config/i3/i3lock-multimonitor/lock
+
+# Screenshot
+bindsym Print exec "maim -u -s -n -l -c 0.157,0.333,0.466,0.4 ~/Pictures/Screenshot-$(date -Iseconds | cut -d'+' -f1).png"
+
