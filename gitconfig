@@ -1,0 +1,5 @@
+[user]
+    name = Varoon Pazhyanur
+    email = pazhyanurv@gmail.com
+[alias]
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
