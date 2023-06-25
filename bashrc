@@ -120,6 +120,7 @@ fi
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
+alias gs='git status' # Fuck ghostscript
 
 
 export NVM_DIR="$HOME/.nvm"
