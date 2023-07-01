@@ -1,5 +1,51 @@
+# Adapted from https://gist.githubusercontent.com/pksunkara/988716/raw/634d340a06d0169c736203b3dd312f768fbacca6/config
 [user]
     name = Varoon Pazhyanur
     email = pazhyanurv@gmail.com
+    username = varoonp123
 [alias]
     lg = log --color --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[init]
+    defaultBranch = main
+[core]
+    editor = nvim
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    pager = delta
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+[color "diff"]
+    meta = blue bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+[delta]
+    features = line-numbers decorations
+    line-numbers = true
+[delta "decorations"]
+    minus-style = red bold normal
+    plus-style = green bold normal
+    minus-emph-style = white bold red
+    minus-non-emph-style = red bold normal
+    plus-emph-style = white bold green
+    plus-non-emph-style = green bold normal
+    file-style = yellow bold none
+    file-decoration-style = yellow box
+    hunk-header-style = magenta bold
+    hunk-header-decoration-style = magenta box
+    minus-empty-line-marker-style = normal normal
+    plus-empty-line-marker-style = normal normal
+    line-numbers-right-format = "{np:^4}│ "
+[github]
+    user = varoonp123
+[gitflow "prefix"]
+    versiontag = v
+[sequence]
+    editor = interactive-rebase-tool
+    human = name-rev --name-only --refs=refs/heads/*
