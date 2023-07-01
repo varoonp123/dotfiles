@@ -1,5 +1,6 @@
 set runtimepath^=~/.vim
 let &packpath = &runtimepath
+let g:vimsyn_embed = 'l'  " Lua syntax highlighting
 
 set statusline+=%F  " Show filename in statusbar
 " Install vim-plug plugin manager https://github.com/junegunn/vim-plug/wiki/tips
@@ -11,8 +12,7 @@ endif
 " plugins!
 "
 call plug#begin()
-Plug 'junegunn/vim-easy-plugin'
 Plug 'scrooloose/syntastic'
-Plug 'averms/black-nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()  " Initialize the plugin system
