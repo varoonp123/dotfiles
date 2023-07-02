@@ -15,12 +15,6 @@
     current = yellow bold
     local = green bold
     remote = cyan bold
-[color "diff"]
-    meta = blue bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
 [color "status"]
     added = green bold
     changed = yellow bold
@@ -28,6 +22,8 @@
 [delta]
     features = line-numbers decorations
     line-numbers = true
+    navigate = true
+    light = false
 [delta "decorations"]
     minus-style = red bold normal
     plus-style = green bold normal
@@ -49,3 +45,8 @@
 [sequence]
     editor = interactive-rebase-tool
     human = name-rev --name-only --refs=refs/heads/*
+# https://github.com/dandavison/delta
+[merge]
+    conflictstyle = diff3
+[interactive]
+    diffFilter = delta --color-only
