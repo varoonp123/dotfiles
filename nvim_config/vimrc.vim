@@ -3,6 +3,7 @@ let &packpath = &runtimepath
 let g:vimsyn_embed = 'l'  " Lua syntax highlighting
 
 set statusline+=%F  " Show filename in statusbar
+set textwidth=120   " good for me and me alone
 " Install vim-plug plugin manager https://github.com/junegunn/vim-plug/wiki/tips
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
