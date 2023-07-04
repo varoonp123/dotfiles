@@ -42,9 +42,6 @@
     user = varoonp123
 [gitflow "prefix"]
     versiontag = v
-[sequence]
-    editor = interactive-rebase-tool
-    human = name-rev --name-only --refs=refs/heads/*
 # https://github.com/dandavison/delta
 [merge]
     conflictstyle = diff3
