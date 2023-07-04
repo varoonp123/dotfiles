@@ -15,5 +15,19 @@ endif
 call plug#begin()
 Plug 'scrooloose/syntastic'
 Plug 'neovim/nvim-lspconfig'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()  " Initialize the plugin system
+
+
+let g:coc_global_extensions = [
+      \'coc-markdownlint',
+      \'coc-highlight',
+      \'coc-rust-analyzer',
+      \'coc-go',
+      \'coc-python',
+      \'coc-sh',
+      \'coc-json', 
+      \'coc-css', 
+      \'coc-git'
+      \]

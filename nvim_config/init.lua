@@ -29,3 +29,5 @@ nvim_lsp.rust_analyzer.setup({
 })
 
 nvim_lsp.pyright.setup {}
+
+require("coc_settings")

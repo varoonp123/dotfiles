@@ -1,0 +1,7 @@
+{"languageserver": {
+  "sql": {
+    "module": "~/.nvm/versions/node/v18.16.1/bin/sql-language-server/sql-language-server/dist/bin/cli.js",
+    "args": ["up", "--method", "node-ipc"],
+    "filetypes": ["sql", "mysql"]
+  }
+}}
