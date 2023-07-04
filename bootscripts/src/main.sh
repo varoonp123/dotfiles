@@ -13,5 +13,5 @@ execute_file bash_symlinks.sh
 execute_file docker.sh
 execute_file cargo_sprinkles.sh
 execute_file js_dev_env.sh
-
+execute_file language_servers_install.sh
 
