@@ -13,11 +13,24 @@ endif
 " plugins!
 "
 call plug#begin()
-Plug 'scrooloose/syntastic'
-Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" LSP Support
+Plug 'neovim/nvim-lspconfig'
+" Install LSPs+formatters+linters
+Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'}
+Plug 'williamboman/mason-lspconfig.nvim'
+
+" Autocompletion
+Plug 'hrsh7th/nvim-cmp'     " Required
+Plug 'hrsh7th/cmp-nvim-lsp' " Required
+Plug 'L3MON4D3/LuaSnip'     " Required
+
+Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 
 call plug#end()  " Initialize the plugin system
+
 
 
 let g:coc_global_extensions = [
