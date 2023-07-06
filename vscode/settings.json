@@ -3,5 +3,5 @@
     "RUSTUP_TOOLCHAIN": "stable"
   },
   "editor.minimap.enabled": false,
-  "workbench.preferredDarkColorTheme": "Default High Contrast",
+  "workbench.preferredDarkColorTheme": "Default High Contrast"
 }
