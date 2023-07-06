@@ -4,6 +4,11 @@ let g:vimsyn_embed = 'l'  " Lua syntax highlighting
 
 set statusline+=%F  " Show filename in statusbar
 set textwidth=120   " good for me and me alone
+set showmatch		" Show matching brackets.
+set tabstop=4		"num spaces when reading tab char 
+set softtabstop=4	"num spaces tab counts for when editting
+set expandtab		"basically makes tab char into 4 spaces
+set number		    "show line numbers
 " Install vim-plug plugin manager https://github.com/junegunn/vim-plug/wiki/tips
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
