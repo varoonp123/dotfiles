@@ -4,8 +4,7 @@ echo "Installing applications. apt+snap+flatpak"
 sudo add-apt-repository ppa:deadsnakes/ppa -y  # Python
 sudo add-apt-repository ppa:aslatter/ppa -y  # alacritty
 (cd ~/dotfiles/bootscripts/src/ && xargs -a $(realpath manifest.ini) sudo apt install)
-sudo snap install alacritty --classic  # 1 more in classic mode and we will get xargs to use spaces correctly.
-sudo snap install nvim --classic
+(cd ~/dotfiles/bootscripts/src/ && xargs -I{} -a $(realpath snap_classic_install_manifest.ini) sudo snap install {} --classic)
 # Trying some things in Snap. Experimental. Sandbox when we can. https://snapcraft.io/docs/snap-confinement
 # -L1 because https://forum.snapcraft.io/t/trying-to-re-install-multiple-packages-with-snap-install-fails-with-install-refresh-information-results-from-the-store/24859
 (cd ~/dotfiles/bootscripts/src/ && xargs -a $(realpath snap_manifest.ini) -L1 sudo snap install)
