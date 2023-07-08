@@ -40,8 +40,6 @@
     line-numbers-right-format = "{np:^4}│ "
 [github]
     user = varoonp123
-[gitflow "prefix"]
-    versiontag = v
 # https://github.com/dandavison/delta
 [merge]
     conflictstyle = diff3
