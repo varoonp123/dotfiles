@@ -3,6 +3,9 @@ set -Eeuo pipefail
 echo "Installing applications. apt+snap+flatpak"
 sudo add-apt-repository ppa:deadsnakes/ppa -y  # Python
 sudo add-apt-repository ppa:aslatter/ppa -y  # alacritty
+sudo add-apt-repository ppa:mmk2410/intellij-idea -y # intellij IDE
+sudo apt update
+
 (cd ~/dotfiles/bootscripts/src/ && xargs -a $(realpath manifest.ini) sudo apt install)
 (cd ~/dotfiles/bootscripts/src/ && xargs -I{} -a $(realpath snap_classic_install_manifest.ini) sudo snap install {} --classic)
 # Trying some things in Snap. Experimental. Sandbox when we can. https://snapcraft.io/docs/snap-confinement
