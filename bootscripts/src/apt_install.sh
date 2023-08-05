@@ -13,4 +13,4 @@ sudo apt update
 (cd ~/dotfiles/bootscripts/src/ && xargs -a $(realpath snap_manifest.ini) -L1 sudo snap install)
 # Flatpak for unstable packages that I want to be 'bleeding edge.' I might regret this.
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-(cd ~/dotfiles/bootscripts/src/ && xargs -a $(realpath flatpak_manifest.ini) flatpak install flathub)
+(cd ~/dotfiles/bootscripts/src/ && xargs -a $(realpath flatpak_manifest.ini) sudo flatpak install flathub)
