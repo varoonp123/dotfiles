@@ -78,10 +78,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 alias cheat='evince ~/dotfiles/cheats/Cpp_reference.pdf &'
 
 # Alias definitions.
@@ -109,6 +105,8 @@ export PATH=$HOME/gems/bin:$PATH
 
 alias gs='git status' # Fuck ghostscript
 
+alias ll='exa -lFB --icons'
+alias lt='ll --tree'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
