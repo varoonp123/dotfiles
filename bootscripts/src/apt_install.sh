@@ -2,7 +2,6 @@
 set -Eeuo pipefail
 echo "Installing applications. apt+snap+flatpak"
 sudo add-apt-repository ppa:deadsnakes/ppa -y  # Python
-sudo add-apt-repository ppa:aslatter/ppa -y  # alacritty
 sudo add-apt-repository ppa:mmk2410/intellij-idea -y # intellij IDE
 sudo apt update
 
