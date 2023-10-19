@@ -115,3 +115,6 @@ export NVM_DIR="$HOME/.nvm"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+
+# Golang
+export PATH=$HOME/go/bin:$HOME/.local/go/bin:$PATH

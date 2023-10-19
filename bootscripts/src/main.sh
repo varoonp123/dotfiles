@@ -14,3 +14,4 @@ execute_file jvm_dev_env.sh
 execute_file cargo_sprinkles.sh
 execute_file js_dev_env.sh
 execute_file language_servers_install.sh
+execute_file install_hugo.sh
