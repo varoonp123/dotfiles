@@ -7,6 +7,7 @@ set textwidth=120   " good for me and me alone
 set showmatch		" Show matching brackets.
 set tabstop=4		"num spaces when reading tab char 
 set softtabstop=4	"num spaces tab counts for when editting
+autocmd FileType json,html,xml,yaml set tabstop=2
 set expandtab		"basically makes tab char into 4 spaces
 set number		    "show line numbers
 " Install vim-plug plugin manager https://github.com/junegunn/vim-plug/wiki/tips
@@ -31,6 +32,8 @@ Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'hrsh7th/nvim-cmp'     " Required
 Plug 'hrsh7th/cmp-nvim-lsp' " Required
 Plug 'L3MON4D3/LuaSnip'     " Required
+Plug 'nvim-lua/plenary.nvim' " For nvim-metals
+Plug 'scalameta/nvim-metals'
 
 Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 
@@ -43,9 +46,17 @@ let g:coc_global_extensions = [
       \'coc-highlight',
       \'coc-rust-analyzer',
       \'coc-go',
-      \'coc-python',
       \'coc-sh',
       \'coc-json', 
+      \'coc-vimlsp', 
       \'coc-css', 
+      \'coc-sql', 
+      \'coc-sqlfluff', 
+      \'coc-pyright', 
+      \'coc-java', 
+      \'coc-lua', 
+      \'coc-toml', 
+      \'coc-yaml', 
+      \'coc-texlab', 
       \'coc-git'
       \]
