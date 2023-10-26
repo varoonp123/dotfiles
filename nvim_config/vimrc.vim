@@ -37,7 +37,11 @@ Plug 'scalameta/nvim-metals'
 
 Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 
+Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }  " colorscheme
+
 call plug#end()  " Initialize the plugin system
+
+colorscheme moonfly
 
 
 
@@ -58,5 +62,6 @@ let g:coc_global_extensions = [
       \'coc-toml', 
       \'coc-yaml', 
       \'coc-texlab', 
+      \'coc-tsserver', 
       \'coc-git'
       \]
