@@ -1,13 +1,21 @@
 # dotfiles
 
-My setup is mainly my i3wm setup, (neo)vim configs, and a collections of things to apt install to make my local env less
-terrible as quickly as possible.
+This repo mainly has an entrypoint [`main.sh`](./bootscripts/src/main.sh) that idempotently installs/updates a Debian or
+Ubuntu machine to keep it up to date as a reasonable setting to get stuff done.
+
+## Main tasks
+
+- Apt installing a bunch of developer tools including neovim, language servers, sdkman/jvm ecosystem, data processing
+  tools, compiler toolchains, docker, and machine-maintenance/monitoring tools.
+- Symlink various dotfiles/config files within the user's `$HOME` directory.
+
+My setup mainly consists of my neo)vim configs, i3wm setup, and a collections of things to apt install to make my local
+env less terrible as quickly as possible.
+
+## Things I dislike
+
+- I want a recent version of Neovim and currently I use snap/snapd for that. That is the last thing I am using Snap for.
 
 ## Unautomated
-- Docker desktop for linux is a tad in flux. For now, after bootstrapping, which does some [docker
-  operations](./bootscripts/src/docker.sh), [do whatever the Docker docs
-  say](https://docs.docker.com/desktop/install/ubuntu/). As of 2023, this involves downloading a file from the Docker
-  website. Maybe apt install it later? Idk what the most reliable boostrapable way of install docker alongside my dev
-  env is.
 - I installed VSCode, Chrome, and (maybe a few others?) manually since I want a relatively recent version. Maybe try
   [flatpack next time?](https://flathub.org/apps/com.visualstudio.code)?
