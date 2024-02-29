@@ -7,5 +7,6 @@ mkdir -p ~/.config/nvim/
 ln -sf ~/dotfiles/nvim_config/vimrc.vim ~/.config/nvim/vimrc.vim
 ln -sf ~/dotfiles/nvim_config/init.lua ~/.config/nvim/init.lua
 ln -sf ~/dotfiles/nvim_config/lua/ ~/.config/nvim/lua
+mkdir -p ~/.vscode/ ~/.config/Code/User/
 ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json  # flatpak uses this path I think
 ln -sf ~/dotfiles/vscode/settings.json ~/.vscode/settings.json  # While downloading from the website uses this path?
