@@ -3,6 +3,7 @@ set -Eeuo pipefail
 npm i -g pyright dockerfile-language-server-nodejs sql-language-server \
         yaml-language-server vscode-langservers-extracted vim-language-server
 
+rustup component add rust-src rust-analyzer
 function installJavaLanguageServer(){
         # Eclipse java language server
 
@@ -15,3 +16,4 @@ function installJavaLanguageServer(){
 
 }
 installJavaLanguageServer
+

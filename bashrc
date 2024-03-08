@@ -8,6 +8,8 @@ case $- in
       *) return;;
 esac
 
+
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -39,6 +41,13 @@ fi
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
+
+# Fedora 39 places the git prompt completions in an odd place, so we add that to get a nice PS1.
+#
+git_prompt_path=/usr/share/git-core/contrib/completion/git-prompt.sh
+if [ -f $git_prompt_path ]; then
+        source "$git_prompt_path"
+fi
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -118,3 +127,8 @@ export PATH=$BUN_INSTALL/bin:$PATH
 
 # Golang
 export PATH=$HOME/go/bin:$HOME/.local/go/bin:$PATH
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+. "$HOME/.cargo/env"
