@@ -127,3 +127,6 @@ export PATH=$HOME/go/bin:$HOME/.local/go/bin:$PATH
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 . "$HOME/.cargo/env"
+
+# https://unix.stackexchange.com/a/593495
+bind 'set bell-style none'
