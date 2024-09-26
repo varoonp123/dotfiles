@@ -7,14 +7,16 @@ function execute_file(){
 
 
 function printUbuntuOrDebianOSNameToStdout {
-        # Writes either 'ubuntu', 'debian', or 'Unsupported' to stdout. This _should_ be rather infallible on all
-        # unixy/posixy systems. Should basically never return a nonzero status code.
+	# Writes either 'ubuntu', 'fedora', 'debian', or 'Unsupported' to stdout. This _should_ be rather infallible on
+	# all unixy/posixy systems. Should basically never return a nonzero status code.
         if [ -f /etc/os-release ]; then
             source /etc/os-release
             if [[ "$ID" =~ ^debian.* ]]; then
                 echo "debian"
             elif [[ "$ID" =~ ^ubuntu.* ]]; then
                 echo "ubuntu"
+            elif [[ "$ID" =~ ^fedora.* ]]; then
+                echo "fedora"
             else
                 echo "Unsupported"
             fi
@@ -31,6 +33,9 @@ function installOSSpecificPackages {
         fi
         if [ "$osname" = "ubuntu" ] || [ "$osname" = "debian" ]; then
                 execute_file apt_install.sh
+        fi
+        if [ "$osname" = "fedora" ]; then
+                execute_file fedora_dnf_install.sh
         fi
         if [ "$osname" = "debian" ]; then
                 execute_file debian_docker_install_and_update.sh
