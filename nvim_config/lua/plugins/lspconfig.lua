@@ -25,7 +25,7 @@ nvim_lsp.rust_analyzer.setup({
                 }
         }
 })
-
+nvim_lsp.html.setup{}
 nvim_lsp.yamlls.setup({
         settings = {
                 yaml = {
@@ -33,12 +33,23 @@ nvim_lsp.yamlls.setup({
                                 ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
                                 ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker*.y*l" } } } })
 nvim_lsp.pyright.setup({ on_attach = on_attach })
+nvim_lsp.ruby_lsp.setup{}
 nvim_lsp.jsonls.setup({
         settings = {
                 json = { validate = { enable = true },
                         schemas = { ["https://json.schemastore.org/package.json"] = "package.json" } } } })
 nvim_lsp.jdtls.setup({})
 nvim_lsp.sqlls.setup({})
+nvim_lsp.eslint.setup({
+  --- ...
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
+nvim_lsp.tsserver.setup({})
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
