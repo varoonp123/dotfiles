@@ -113,7 +113,7 @@ export PATH=$HOME/gems/bin:$PATH
 
 alias gs='git status' # Fuck ghostscript
 
-alias ll='exa -lFB --icons'
+alias ll='ls -al'
 alias lt='ll --tree'
 
 export NVM_DIR="$HOME/.nvm"
