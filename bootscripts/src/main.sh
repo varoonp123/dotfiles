@@ -29,7 +29,6 @@ function installOSSpecificPackages {
         if [ "$osname" = "ubuntu" ]; then
                 execute_file apt_install_ubuntu_specific_packages.sh
                 execute_file ubuntu_docker_install_and_update.sh
-                execute_file install_hugo_from_source.sh  # We should now have golang and can compile from source
         fi
         if [ "$osname" = "ubuntu" ] || [ "$osname" = "debian" ]; then
                 execute_file apt_install.sh
@@ -39,7 +38,6 @@ function installOSSpecificPackages {
         fi
         if [ "$osname" = "debian" ]; then
                 execute_file debian_docker_install_and_update.sh
-                sudo apt install hugo  # Good enough on recent versions of debian (bullseye +).
         fi
 }
 execute_file compilers.sh
