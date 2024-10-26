@@ -128,3 +128,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # https://unix.stackexchange.com/a/593495
 bind 'set bell-style none'
+
+# User-specific binaries
+mkdir -p ~/bin
+export PATH="$PATH:$HOME/bin"
