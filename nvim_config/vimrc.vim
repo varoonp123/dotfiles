@@ -10,6 +10,11 @@ set softtabstop=4	"num spaces tab counts for when editting
 autocmd FileType json,html,xml,yaml set tabstop=2
 set expandtab		"basically makes tab char into 4 spaces
 set number		    "show line numbers
+set relativenumber  "Show relative line numberd
+set signcolumn=auto "Grey bar on far left by line numbers only appears when there is diagnostic info
 set mouse=a         "Allow mouse in all modes
-set signcolumn=yes
-set inccommand=split
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500 "Highlight matching parens for 500ms
