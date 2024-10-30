@@ -33,7 +33,6 @@ nvim_lsp.yamlls.setup({
                                 ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
                                 ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker*.y*l" } } } })
 nvim_lsp.pyright.setup({ on_attach = on_attach })
-nvim_lsp.ruby_lsp.setup{}
 nvim_lsp.jsonls.setup({
         settings = {
                 json = { validate = { enable = true },
