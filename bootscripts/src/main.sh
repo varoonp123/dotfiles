@@ -42,7 +42,7 @@ function installOSSpecificPackages {
 }
 execute_file compilers.sh
 installOSSpecificPackages
-execute_file bash_symlinks.sh
+execute_file refresh_symlinks.sh
 set +u  # This script needs uses some odd bash
 execute_file jvm_dev_env.sh
 set -u
