@@ -17,5 +17,13 @@ function installJavaLanguageServer(){
         ln -sf ~/.local/share/jdtls/bin/jdtls ~/bin/jdtls
         rm -rf $outpath
 }
-installJavaLanguageServer
+function installJdtlsIfNotExists() {
+        if [ -x "$(command -v cargo)" ]; then
+            echo "jdtls is already installed. skipping installation"
+        else
+            echo "jdtls not found. installing"
+            installJavaLanguageServer
+        fi
+}
+installJdtlsIfNotExists
 
