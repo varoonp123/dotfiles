@@ -112,7 +112,7 @@ export PATH=$HOME/gems/bin:$PATH
 alias gs='git status' # Fuck ghostscript
 
 alias ll='ls -al'
-alias lt='ll --tree'
+alias lt='tree'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
