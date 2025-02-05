@@ -18,7 +18,7 @@ function installJavaLanguageServer(){
         rm -rf $outpath
 }
 function installJdtlsIfNotExists() {
-        if [ -x "$(command -v cargo)" ]; then
+        if [ -x "$(command -v jdtls)" ]; then
             echo "jdtls is already installed. skipping installation"
         else
             echo "jdtls not found. installing"
