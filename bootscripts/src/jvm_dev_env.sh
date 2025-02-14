@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -eo pipefail
 
 # Right now, sdkman seems to be the best way of boostrapping a good java/jvm dev env. https://sdkman.io/

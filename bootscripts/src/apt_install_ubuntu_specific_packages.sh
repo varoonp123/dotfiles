@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euxo pipefail
+function installUbuntuSpecificPackages() {
+        local scriptDir
+        scriptDir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+        /bin/bash "$scriptDir/ubuntu_install_deadsnames_ppa_and_python.sh"
 
-echo "Installing intellij community IDE and Python for ubuntu"
-(cd ~/dotfiles/bootscripts/src/ && xargs -L1 -a $(realpath ubuntu_ppa_manifest.ini) sudo add-apt-repository)
-sudo apt update && sudo apt upgrade
-(cd ~/dotfiles/bootscripts/src/ && xargs -a $(realpath deadsnakes_ppa_install_manifest.ini) sudo apt install)
-sudo apt install -y intellij-idea-community
+}
+installUbuntuSpecificPackages

@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-echo "Installing applications. dnf+flatpak"
-sudo dnf upgrade
-(cd ~/dotfiles/bootscripts/src/ && xargs sudo dnf install -y < <(cat "$(realpath manifest.ini)" "$(realpath fedora_manifest.ini)"))
+function fedoraDnfInstall() {
 
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-(cd ~/dotfiles/bootscripts/src/ && xargs -a "$(realpath flatpak_manifest.ini)" flatpak install flathub)
+        local -r scriptDir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+        echo "Installing applications with dnf"
+        sudo dnf upgrade
+        xargs sudo dnf install -y < <(cat "$scriptDir/manifest.ini" "$scriptDir/fedora_manifest.ini")
+}
+fedoraDnfInstall
