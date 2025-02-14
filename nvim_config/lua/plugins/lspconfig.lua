@@ -39,6 +39,7 @@ nvim_lsp.jsonls.setup({
                         schemas = { ["https://json.schemastore.org/package.json"] = "package.json" } } } })
 nvim_lsp.jdtls.setup({})
 nvim_lsp.sqlls.setup({})
+nvim_lsp.clangd.setup({})
 nvim_lsp.eslint.setup({
   --- ...
   on_attach = function(client, bufnr)
