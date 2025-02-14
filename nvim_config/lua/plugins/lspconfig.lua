@@ -1,7 +1,7 @@
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client)
-        require 'completion'.on_attach(client)
+        print("Attaching LSP: " .. client.name)
 end
 
 nvim_lsp.rust_analyzer.setup({
@@ -49,7 +49,7 @@ nvim_lsp.eslint.setup({
     })
   end,
 })
-nvim_lsp.tsserver.setup({})
+nvim_lsp.ts_ls.setup({})
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
