@@ -6,5 +6,6 @@ function fedoraDnfInstall() {
         echo "Installing applications with dnf"
         sudo dnf upgrade
         xargs sudo dnf install -y < <(cat "$scriptDir/manifest.ini" "$scriptDir/fedora_manifest.ini")
+        "$scriptDir/fedora_install_vscode.sh"
 }
 fedoraDnfInstall
