@@ -97,6 +97,8 @@ def _install_os_specific_packages(
     elif os_name == _SupportedOperatingSystem.debian:
         _execute_script_relative_to_scriptdir("debian_docker_install_and_update.sh")
 
+    if (profile, os_name) == (_MachineProfile.workstation, _SupportedOperatingSystem.fedora):
+        _execute_script_relative_to_scriptdir("fedora_install_vscode.sh")
 
 class _BootstrapOpts(Namespace):
     profile: _MachineProfile
