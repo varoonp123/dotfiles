@@ -8,7 +8,7 @@ function install_microsoft_vscode_rpm_repo {
 
 }
 function install_vscode {
-        dnf check-update
+        sudo dnf check-update
         sudo dnf install code
 }
 function installExtensions {
