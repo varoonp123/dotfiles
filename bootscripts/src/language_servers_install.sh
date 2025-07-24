@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-npm i -g pyright dockerfile-language-server-nodejs sql-language-server typescript \
+npm i -g pyright dockerfile-language-server-nodejs typescript \
         yaml-language-server vscode-langservers-extracted vim-language-server vscode-html-languageserver-bin typescript-language-server
 
 rustup component add rust-src rust-analyzer
