@@ -3,6 +3,7 @@ set -Eeuo pipefail
 function refreshSymlinks() {
         local -r scriptDir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
         local -r repoDir="$(dirname "$(dirname "$scriptDir")")"
+        ln -sf "$repoDir/bash_profile" ~/.bash_profile
         ln -sf "$repoDir/bashrc" ~/.bashrc
         ln -sf "$repoDir/nvim_config/vimrc.vim" ~/.vimrc
         ln -sf "$repoDir/gitconfig" ~/.gitconfig
