@@ -124,6 +124,34 @@ export PATH=$HOME/go/bin:$HOME/.local/go/bin:$PATH
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+function linkDirInExternalMountToDirInHome() {
+    # Like ln -snf "$1" "$2" except that if $2 exists, we delete it.
+    # $2 should always be safely deletable, recreatable as needed, and roughly a cache.
+    # If $1 is unreachable, the system should be able to continue normally
+    # $1 = directory in external drive. This will be the 'source of truth'
+    # $2 = directory that will be in $HOME
+    if [ ! -d "$(dirname "$1")" ]; then
+        echo "Base directory of $1 does not exist for CARGO HOME. Leaving it as $2"
+        return
+    fi
+    if [ ! -d "$1" ]; then
+        mkdir -p "$1"
+    fi
+    if [ -d "$2" ]  && [ ! -L "$2" ]; then
+         rm -rf "$2"
+    fi
+    echo "Linking $1 to $2"
+    ln -snf "$1" "$2"
+}
+
+# Cargo caches can take up TONS of space, so offload it from my small boot
+# drive. It is ok if this is not reachable; my system will go on without issue
+linkDirInExternalMountToDirInHome "/workspace/.cargo" "$HOME/.cargo"
+
+if [ ! -f "$HOME/.cargo/env" ]; then
+    echo "Is cargo installed??"
+fi
 . "$HOME/.cargo/env"
 
 # https://unix.stackexchange.com/a/593495
