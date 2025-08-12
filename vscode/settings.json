@@ -33,4 +33,5 @@
   "python.analysis.typeEvaluation.enableReachabilityAnalysis": true,
   "python.testing.pytestEnabled": true,
   "python.createEnvironment.contentButton": "show",
+  "git.blame.editorDecoration.enabled": true,
 }
