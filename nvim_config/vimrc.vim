@@ -18,3 +18,6 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500 "Highlight matching parens for 500ms
+
+" I like 80 character width for markdown files
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
