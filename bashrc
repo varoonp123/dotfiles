@@ -144,7 +144,7 @@ function linkDirInExternalMountToDirInHome() {
     # $1 = directory in external drive. This will be the 'source of truth'
     # $2 = directory that will be in $HOME
     if [ ! -d "$(dirname "$1")" ]; then
-        echo "Base directory of $1 does not exist for CARGO HOME. Leaving it as $2"
+        echo "Base directory of $1 does not exist for linking to $2. Leaving it as $2"
         return
     fi
     if [ ! -d "$1" ]; then
@@ -163,8 +163,10 @@ linkDirInExternalMountToDirInHome "/workspace/.cargo" "$HOME/.cargo"
 
 if [ ! -f "$HOME/.cargo/env" ]; then
     echo "Is cargo installed??"
+else
+    . "$HOME/.cargo/env"
 fi
-. "$HOME/.cargo/env"
+
 
 # https://unix.stackexchange.com/a/593495
 bind 'set bell-style none'
