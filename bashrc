@@ -41,10 +41,22 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# Fedora 39 places the git prompt completions in an odd place, so we add that to get a nice PS1.
-#
-git_prompt_path=/usr/share/git-core/contrib/completion/git-prompt.sh
-if [ -f $git_prompt_path ]; then
+function findGitPromptSh() {
+    # Fedora 39+
+    if [ -f "/usr/share/git-core/contrib/completion/git-prompt.sh" ]; then
+            echo "/usr/share/git-core/contrib/completion/git-prompt.sh"
+    # Debian 12+ and ubuntu
+    elif [ -f "/usr/lib/git-core/git-sh-prompt" ]; then
+            echo "/usr/lib/git-core/git-sh-prompt"
+    else
+            echo "No git prompt script was found. Is this an unsupported OS/platform?" >&2
+    fi
+
+}
+
+git_prompt_path="$(findGitPromptSh)"
+if [ -f "$git_prompt_path" ]; then
+        # This puts the __git_ps1 command in the $PATH
         source "$git_prompt_path"
 fi
 
