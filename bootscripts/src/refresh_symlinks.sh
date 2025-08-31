@@ -11,7 +11,7 @@ function refreshSymlinks() {
         ln -sf "$repoDir/nvim_config/vimrc.vim" ~/.config/nvim/vimrc.vim
         ln -sf "$repoDir/nvim_config/coc-settings.json" ~/.config/nvim/coc-settings.json
         ln -sf "$repoDir/nvim_config/init.lua" ~/.config/nvim/init.lua
-        ln -sf "$repoDir/nvim_config/lua/" ~/.config/nvim/lua
+        ln -snf "$repoDir/nvim_config/lua" ~/.config/nvim/lua
         mkdir -p ~/.vscode/ ~/.config/Code/User/
         ln -sf "$repoDir/vscode/settings.json" ~/.config/Code/User/settings.json  # flatpak uses this path I think
         ln -sf "$repoDir/vscode/settings.json" ~/.vscode/settings.json  # While downloading from the website uses this path?
