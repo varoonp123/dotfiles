@@ -7,20 +7,23 @@ Ubuntu 24.04+, and Fedora 41+.
 
 Profiles
 --------
-Workstation -- The full environment that I want, including all of the graphical applications I use on my most powerful
+Personal Workstation Sudoer-- The full environment that I want, including all of the graphical applications I use on my most powerful
 personal computer. It also includes Steam, since I only game on my personal desktop/workstation
 
-Travel Laptop -- The thin and light computer I take with me when I travel. This doesn't need too many graphical
+Personal Travel Laptop Sudoer -- The thin and light computer I take with me when I travel. This doesn't need too many graphical
 applications, but should be prepared to write, test, debug, etc. SMALL programs. No gaming on this machine.
 
-WSL -- Windows Subsystem for Linux. All work -- no play. No graphical applications. Only programming from neovim and
+Work WSL Sudoer -- Windows Subsystem for Linux. All work -- no play. No graphical applications. Only programming from neovim and
 tools for working with data.
+
+Work Workstation Sudoer == All work -- no play.
 """
 
 from argparse import ArgumentParser, Namespace, RawDescriptionHelpFormatter
 from collections.abc import Sequence
 import logging
 import subprocess
+import sys
 from pathlib import Path
 from enum import Enum, unique
 from typing import Final
@@ -30,9 +33,10 @@ _LOGGER = logging.getLogger(__file__)
 
 @unique
 class _MachineProfile(str, Enum):
-    workstation = "workstation"
-    travel_laptop = "travel_laptop"
-    wsl = "wsl"
+    personal_workstation_sudoer = "personal_workstation_sudoer"
+    personal_travel_laptop_sudoer = "personal_travel_laptop_sudoer"
+    work_wsl_sudoer = "work_wsl_sudoer"
+    work_workstation_sudoer = "work_workstation_sudoer"
 
 
 @unique
@@ -40,6 +44,7 @@ class _SupportedOperatingSystem(str, Enum):
     ubuntu = "ubuntu"
     debian = "debian"
     fedora = "fedora"
+    macos = "macos"
 
 
 _SCRIPT_DIR: Final[Path] = Path(__file__).parent
@@ -51,8 +56,10 @@ def _execute_script_relative_to_scriptdir(file_name: str, args: Sequence[str] = 
 
 
 def _get_os_name() -> _SupportedOperatingSystem | None:
+    if sys.platform == "darwin":
+        return _SupportedOperatingSystem.macos
     os_release_path = Path("/etc/os-release")
-    if not os_release_path.exists():
+    if not os_release_path.is_file():
         return None
     with open(os_release_path, "r") as f:
         for line in f:
@@ -78,7 +85,7 @@ def _install_os_specific_packages(
             str(_SCRIPT_DIR.joinpath("apt_manifest.ini").absolute()),
             *(
                 tuple()
-                if profile == _MachineProfile.wsl
+                if profile == _MachineProfile.work_wsl_sudoer
                 else (
                     str(
                         _SCRIPT_DIR.joinpath(
@@ -89,6 +96,10 @@ def _install_os_specific_packages(
             ),
         )
         _execute_script_relative_to_scriptdir("apt_install_manifests.sh", manifests)
+    if (profile, os_name) == (_MachineProfile.work_workstation_sudoer, _SupportedOperatingSystem.macos):
+
+        subprocess.check_call(("brew", "bundle", "-f",
+                               str(_SCRIPT_DIR.joinpath("down_to_business_brewfile").absolute())))
     if os_name == _SupportedOperatingSystem.ubuntu:
         _execute_script_relative_to_scriptdir("apt_install_ubuntu_specific_packages.sh")
         _execute_script_relative_to_scriptdir("ubuntu_docker_install_and_update.sh")
@@ -98,7 +109,7 @@ def _install_os_specific_packages(
         _execute_script_relative_to_scriptdir("debian_docker_install_and_update.sh")
 
     if (os_name == _SupportedOperatingSystem.fedora) and (
-        profile in (_MachineProfile.workstation, _MachineProfile.travel_laptop)
+        profile in (_MachineProfile.personal_workstation_sudoer, _MachineProfile.personal_travel_laptop_sudoer)
     ):
         _execute_script_relative_to_scriptdir("fedora_install_vscode.sh")
 
@@ -135,13 +146,14 @@ def _run(opts: _BootstrapOpts):
         _msg = f"This script can only run on {tuple(map(str, _SupportedOperatingSystem.__members__))}"
         raise OSError(_msg)
     _install_os_specific_packages(opts.profile, os_name)
-    _execute_script_relative_to_scriptdir("compilers.sh")
+    if os_name != _SupportedOperatingSystem.macos:
+        _execute_script_relative_to_scriptdir("compilers.sh")
     _execute_script_relative_to_scriptdir("refresh_symlinks.sh")
-    _execute_script_relative_to_scriptdir("jvm_dev_env.sh")
+    #_execute_script_relative_to_scriptdir("jvm_dev_env.sh")
     _execute_script_relative_to_scriptdir("cargo_sprinkles.sh")
     _execute_script_relative_to_scriptdir("js_dev_env.sh")
     _execute_script_relative_to_scriptdir("language_servers_install.sh")
-    if opts.profile == _MachineProfile.workstation:
+    if opts.profile == _MachineProfile.personal_workstation_sudoer:
         _execute_script_relative_to_scriptdir(
             "flatpak_flathub_install_from_manifest.sh",
             (
@@ -153,9 +165,9 @@ def _run(opts: _BootstrapOpts):
             ),
         )
         pass
-    elif opts.profile == _MachineProfile.travel_laptop:
+    elif opts.profile == _MachineProfile.personal_travel_laptop_sudoer:
         pass
-    if opts.profile in (_MachineProfile.workstation, _MachineProfile.travel_laptop):
+    if opts.profile in (_MachineProfile.personal_workstation_sudoer, _MachineProfile.personal_travel_laptop_sudoer):
         _execute_script_relative_to_scriptdir(
             "flatpak_flathub_install_from_manifest.sh",
             (

@@ -14,7 +14,7 @@ Invoke like `./bootscripts/src/main.py -p travel_laptop`, or with a different pr
 
 ```text
 $ ./bootscripts/src/main.py --help
-usage: main.py [-h] -p {workstation,travel_laptop,wsl}
+usage: main.py [-h] -p {personal_workstation_sudoer,personal_travel_laptop_sudoer,work_wsl_sudoer,work_workstation_sudoer}
 
 A script to bootstrap and idempotently update my 'real' computers running Linux
 where I do real things. It supports OSs that I have daily driven recently and
@@ -26,21 +26,24 @@ Bookworm+, Ubuntu 24.04+, and Fedora 41+.
 
 Profiles
 --------
-Workstation -- The full environment that I want, including all of the graphical
-applications I use on my most powerful personal computer. It also includes
-Steam, since I only game on my personal desktop/workstation
+Personal Workstation Sudoer-- The full environment that I want, including all of
+the graphical applications I use on my most powerful personal computer. It also
+includes Steam, since I only game on my personal desktop/workstation
 
-Travel Laptop -- The thin and light computer I take with me when I travel. This
-doesn't need too many graphical applications, but should be prepared to write,
-test, debug, etc. SMALL programs. No gaming on this machine.
+Personal Travel Laptop Sudoer -- The thin and light computer I take with me when
+I travel. This doesn't need too many graphical applications, but should be
+prepared to write, test, debug, etc. SMALL programs. No gaming on this machine.
 
-WSL -- Windows Subsystem for Linux. All work -- no play. No graphical
-applications. Only programming from neovim and tools for working with data.
+Work WSL Sudoer -- Windows Subsystem for Linux. All work -- no play. No
+graphical applications. Only programming from neovim and tools for working with
+data.
+
+Work Workstation Sudoer == All work -- no play.
+
 
 options:
   -h, --help            show this help message and exit
-  -p, --profile {workstation,travel_laptop,wsl}
-
+  -p {personal_workstation_sudoer,personal_travel_laptop_sudoer,work_wsl_sudoer,work_workstation_sudoer}, --profile {personal_workstation_sudoer,personal_travel_laptop_sudoer,work_wsl_sudoer,work_workstation_sudoer}
 ```
 
 ## Main tasks
