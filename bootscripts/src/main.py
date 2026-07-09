@@ -96,10 +96,18 @@ def _install_os_specific_packages(
             ),
         )
         _execute_script_relative_to_scriptdir("apt_install_manifests.sh", manifests)
-    if (profile, os_name) == (_MachineProfile.work_workstation_sudoer, _SupportedOperatingSystem.macos):
-
-        subprocess.check_call(("brew", "bundle", "-f",
-                               str(_SCRIPT_DIR.joinpath("down_to_business_brewfile").absolute())))
+    if (profile, os_name) == (
+        _MachineProfile.work_workstation_sudoer,
+        _SupportedOperatingSystem.macos,
+    ):
+        subprocess.check_call(
+            (
+                "brew",
+                "bundle",
+                "--file",
+                str(_SCRIPT_DIR.joinpath("down_to_business_brewfile").absolute()),
+            )
+        )
     if os_name == _SupportedOperatingSystem.ubuntu:
         _execute_script_relative_to_scriptdir("apt_install_ubuntu_specific_packages.sh")
         _execute_script_relative_to_scriptdir("ubuntu_docker_install_and_update.sh")
@@ -109,7 +117,11 @@ def _install_os_specific_packages(
         _execute_script_relative_to_scriptdir("debian_docker_install_and_update.sh")
 
     if (os_name == _SupportedOperatingSystem.fedora) and (
-        profile in (_MachineProfile.personal_workstation_sudoer, _MachineProfile.personal_travel_laptop_sudoer)
+        profile
+        in (
+            _MachineProfile.personal_workstation_sudoer,
+            _MachineProfile.personal_travel_laptop_sudoer,
+        )
     ):
         _execute_script_relative_to_scriptdir("fedora_install_vscode.sh")
 
@@ -149,7 +161,7 @@ def _run(opts: _BootstrapOpts):
     if os_name != _SupportedOperatingSystem.macos:
         _execute_script_relative_to_scriptdir("compilers.sh")
     _execute_script_relative_to_scriptdir("refresh_symlinks.sh")
-    #_execute_script_relative_to_scriptdir("jvm_dev_env.sh")
+    # _execute_script_relative_to_scriptdir("jvm_dev_env.sh")
     _execute_script_relative_to_scriptdir("cargo_sprinkles.sh")
     _execute_script_relative_to_scriptdir("js_dev_env.sh")
     _execute_script_relative_to_scriptdir("language_servers_install.sh")
@@ -167,7 +179,10 @@ def _run(opts: _BootstrapOpts):
         pass
     elif opts.profile == _MachineProfile.personal_travel_laptop_sudoer:
         pass
-    if opts.profile in (_MachineProfile.personal_workstation_sudoer, _MachineProfile.personal_travel_laptop_sudoer):
+    if opts.profile in (
+        _MachineProfile.personal_workstation_sudoer,
+        _MachineProfile.personal_travel_laptop_sudoer,
+    ):
         _execute_script_relative_to_scriptdir(
             "flatpak_flathub_install_from_manifest.sh",
             (
