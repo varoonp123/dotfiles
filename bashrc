@@ -48,6 +48,9 @@ function findGitPromptSh() {
     # Debian 12+ and ubuntu
     elif [ -f "/usr/lib/git-core/git-sh-prompt" ]; then
             echo "/usr/lib/git-core/git-sh-prompt"
+    # MacOS. Highly variable in macos depending on how you install git. Best effort
+    elif [ -f "/opt/homebrew/etc/bash_completion.d/git-prompt.sh" ]; then
+            echo "/opt/homebrew/etc/bash_completion.d/git-prompt.sh"
     else
             echo "No git prompt script was found. Is this an unsupported OS/platform?" >&2
     fi
